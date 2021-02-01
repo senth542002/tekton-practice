@@ -13,6 +13,8 @@ kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline
 
 3) Check progress -> kubectl get pods --namespace tekton-pipelines
 
+https://www.arthurkoziel.com/creating-ci-pipelines-with-tekton-part-1/
+
 
 #Tekton Dashboard -> https://katacoda.com/tektoncd/scenarios/dashboard
 

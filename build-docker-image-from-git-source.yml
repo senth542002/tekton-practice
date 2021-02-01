@@ -1,28 +1,14 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: build-docker-image-from-git-source
+  name: test
 spec:
-  params:
-    - name: pathToDockerFile
-      type: string
-      description: The path to the dockerfile to build
-      default: $(resources.inputs.docker-source.path)/Dockerfile
-    - name: pathToContext
-      type: string
-      description: |
-        The build context used by Kaniko
-        (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
-      default: $(resources.inputs.docker-source.path)
   resources:
     inputs:
-      - name: docker-source
+      - name: repo
         type: git
-    outputs:
-      - name: builtImage
-        type: image
   steps:
-    - name: build-and-push
+    - name: run-test
       image: gcr.io/kaniko-project/executor:v0.16.0
       # specifying DOCKER_CONFIG is required to allow kaniko to detect docker credential
       env:

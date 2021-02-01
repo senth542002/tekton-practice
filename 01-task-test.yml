@@ -1,0 +1,15 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: test
+spec:
+  resources:
+    inputs:
+      - name: repo
+        type: git
+  steps:
+    - name: run-test
+      image: gradle:6.8.1-jdk11
+      workingDir: /workspace/repo
+      command: ["./gradlew"]
+      args: ["test"]
